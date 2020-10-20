@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.6
 
 RUN sed -i "s@dl-cdn.alpinelinux.org@mirrors.aliyun.com@g" /etc/apk/repositories && \
     apk add --no-cache nginx tzdata bash php7 php7-ldap php7-mbstring php7-mcrypt php7-fpm && \
