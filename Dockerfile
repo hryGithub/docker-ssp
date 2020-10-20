@@ -8,11 +8,12 @@ RUN sed -i "s@dl-cdn.alpinelinux.org@mirrors.aliyun.com@g" /etc/apk/repositories
 ENV SSP_VERSION=1.3
 ENV TZ=Asia/Shanghai
 
-RUN cd /var/www && wget https://github.com/ltb-project/self-service-password/archive/v${SSP_VERSION}.tar.gz && tar xf v${SSP_VERSION}.tar.gz && rm -rf v${SSP_VERSION}.tar.gz
+RUN cd /var/www && wget https://github.com/ltb-project/self-service-password/archive/v${SSP_VERSION}.tar.gz && \
+    tar xf v${SSP_VERSION}.tar.gz && mv self-service-password-${SSP_VERSION} ssp && rm -rf v${SSP_VERSION}.tar.gz
 
 ADD entrypoint.sh /entrypoint.sh
+ADD default.conf /etc/nginx/conf.d/default.conf
 
-
-VOLUME ["/data", "/var/www/build"]
+VOLUME ["/etc/nginx/", "/var/www/ssp"]
 
 ENTRYPOINT ["sh", "/entrypoint.sh"]

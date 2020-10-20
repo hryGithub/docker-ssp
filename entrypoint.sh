@@ -9,4 +9,5 @@ if [ ! -d /run/nginx ]; then
     chown -R nginx.nginx /run/nginx
 fi
 
-nginx
+php-fpm7 
+nginx -g "daemon off"
