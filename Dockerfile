@@ -14,6 +14,8 @@ RUN cd /var/www && wget https://github.com/ltb-project/self-service-password/arc
 ADD entrypoint.sh /entrypoint.sh
 ADD default.conf /etc/nginx/conf.d/default.conf
 
+EXPOSE 80
+
 VOLUME ["/etc/nginx/", "/var/www/ssp"]
 
 ENTRYPOINT ["sh", "/entrypoint.sh"]
