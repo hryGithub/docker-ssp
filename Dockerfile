@@ -1,8 +1,8 @@
 FROM alpine:3.12
 
 RUN sed -i "s@dl-cdn.alpinelinux.org@mirrors.aliyun.com@g" /etc/apk/repositories && \
-    apk add --no-cache nginx tzdata bash php7 php7-ldap php7-mbstring php7-mcrypt php7-filter && \
-    ln -s /usr/bin/php7 /usr/bin/php && rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/cache/distfiles/* /var/www/localhost/htdocs/*
+    apk add --no-cache nginx tzdata bash php7 php7-ldap php7-mbstring php7-mcrypt php7-fpm && \
+    rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/cache/distfiles/* /var/www/localhost/htdocs/*
 
 
 ENV SSP_VERSION=1.3
