@@ -5,8 +5,7 @@ cp /usr/share/zoneinfo/$TZ /etc/localtime && echo "$TZ" > /etc/timezone
 
 # init nginx
 if [ ! -d /run/nginx ]; then
-    mkdir -p /run/nginx
-    chown -R nginx.nginx /run/nginx
+    mkdir -p /run/nginx /var/tmp/nginx 
 fi
 
 sed -i "s@listen = 127.0.0.1:9000@listen = /var/run/php-fpm.socket@g" /etc/php7/php-fpm.d/www.conf

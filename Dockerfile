@@ -11,6 +11,7 @@ ENV TZ=Asia/Shanghai
 RUN cd /var/www && curl -sSL -o v${SSP_VERSION}.tar.gz https://github.com/ltb-project/self-service-password/archive/v${SSP_VERSION}.tar.gz && \
     tar xf v${SSP_VERSION}.tar.gz && mv self-service-password-${SSP_VERSION} ssp && rm -rf v${SSP_VERSION}.tar.gz
 
+
 ADD entrypoint.sh /entrypoint.sh
 ADD default.conf /etc/nginx/conf.d/default.conf
 
