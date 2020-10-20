@@ -10,4 +10,4 @@ if [ ! -d /run/nginx ]; then
 fi
 
 php-fpm7 
-nginx -g "daemon off"
+nginx -g "daemon off;"
