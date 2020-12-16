@@ -29,4 +29,4 @@ ADD config.inc.local.php /var/www/ssp/conf/config.inc.local.php
 EXPOSE 80
 
 VOLUME ["/etc/nginx/", "/var/www/ssp"]
-ENTRYPOINT ["sh", "/entrypoint.sh"]
+ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
