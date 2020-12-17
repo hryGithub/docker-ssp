@@ -18,6 +18,9 @@ ENV MAIL_SMTP_HOST='localhost' \
     MAIL_SMTP_USER='' \
     MAIL_SMTP_PASS='' 
 
+ENV SITE_URL='http://ldap.example.org' \
+    KEYPHRASE='uK9Kargj'
+
 RUN cd /var/www && wget https://github.com/ltb-project/self-service-password/archive/v${SSP_VERSION}.tar.gz && \
     tar xf v${SSP_VERSION}.tar.gz && mv self-service-password-${SSP_VERSION} ssp && rm -rf v${SSP_VERSION}.tar.gz
 

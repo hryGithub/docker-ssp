@@ -22,6 +22,8 @@ $use_sms = false;
 # QUESTION
 $use_questions = false;
 
-$keyphrase = "uK9Kargj";
+$keyphrase = getenv('KEYPHRASE');
+
+$reset_url = getenv('SITE_URL') . "/index.php";
 
 ?>
