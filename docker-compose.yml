@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  openldap:
+    image: hyr326/openldap:latest
+    volumes:
+      - ./slapd.d/:/etc/openldap/slapd.d
+      - ./openldap-data/:/var/lib/openldap/openldap-data
+    restart: always
+    ports:
+      - "389:389"
+    environment:
+      LDAP_ORGANIZATION: example
+      LDAP_DOMAIN: example.org
+      LDAP_PASSWORD: admin
+      LDAP_RFC2307BIS_SCHEMA: true
+    networks:
+      - ldap-ssp
+  ldap-ssp:
+    image: hyr326/ldap-ssp:latest
+    depends_on: 
+      - openldap
+    volumes:
+      - ./ssp:/var/www/ssp
+    ports:
+      - "80:80"
+    environment:
+      LDAP_URL: 'ldap://openldap'
+      LDAP_BASE: 'dc=example,dc=org'
+      LDAP_BINDDN: 'cn=admin,dc=example,dc=org'
+      LDAP_BINDPW: 'passwd' 
+      MAIL_SMTP_HOST: 'localhost'
+      MAIL_SMTP_PORT: 25
+      MAIL_SMTP_USER: ''
+      MAIL_SMTP_PASS: '' 
+      SITE_URL: 'http://ldap.example.org'
+      KEYPHRASE: 'uK9Kargj'
+    networks:
+      - ldap-ssp
+
+networks:
+  ldap-ssp:
