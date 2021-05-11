@@ -5,7 +5,7 @@ RUN sed -i "s@dl-cdn.alpinelinux.org@mirrors.aliyun.com@g" /etc/apk/repositories
     rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/cache/distfiles/* /var/www/localhost/htdocs/*
 
 
-ENV SSP_VERSION=1.3
+ENV SSP_VERSION=1.4.2
 ENV TZ=Asia/Shanghai
 
 ENV LDAP_URL='ldap://localhost:389' \
